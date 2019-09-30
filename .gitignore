@@ -1477,3 +1477,4 @@ DerivedData/
 *.yml
 !build.gradle
 !src/
+!*.md
