@@ -19,11 +19,11 @@ package com.brainlesslabs.momo.common.utils;
 
 /**
  * Murmur3 is successor to Murmur2 fast non-crytographic hash algorithms.
- *
+ * <p>
  * Murmur3 32 and 128 bit variants.
  * 32-bit Java port of https://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp#94
  * 128-bit Java port of https://code.google.com/p/smhasher/source/browse/trunk/MurmurHash3.cpp#255
- *
+ * <p>
  * This is a public domain code with no copyrights.
  * From homepage of MurmurHash (https://code.google.com/p/smhasher/),
  * "All MurmurHash versions are public domain software, and the author disclaims all copyright
@@ -32,7 +32,7 @@ package com.brainlesslabs.momo.common.utils;
 public class Murmur3 {
     // from 64-bit linear congruential generator
     public static final long NULL_HASHCODE = 2862933555777941757L;
-
+    public static final int DEFAULT_SEED = 104729;
     // Constants for 32 bit variant
     private static final int C1_32 = 0xcc9e2d51;
     private static final int C2_32 = 0x1b873593;
@@ -40,7 +40,6 @@ public class Murmur3 {
     private static final int R2_32 = 13;
     private static final int M_32 = 5;
     private static final int N_32 = 0xe6546b64;
-
     // Constants for 128 bit variant
     private static final long C1 = 0x87c37b91114253d5L;
     private static final long C2 = 0x4cf5ad432745937fL;
@@ -50,8 +49,6 @@ public class Murmur3 {
     private static final int M = 5;
     private static final int N1 = 0x52dce729;
     private static final int N2 = 0x38495ab5;
-
-    public static final int DEFAULT_SEED = 104729;
 
     public static int hash32(long l0, long l1) {
         return hash32(l0, l1, DEFAULT_SEED);
@@ -103,7 +100,7 @@ public class Murmur3 {
     /**
      * Murmur3 32-bit variant.
      *
-     * @param data - input byte array
+     * @param data   - input byte array
      * @param length - length of array
      * @return - hashcode
      */
@@ -231,7 +228,7 @@ public class Murmur3 {
         long hash = DEFAULT_SEED;
         long k1 = 0;
         k1 ^= ((long) data & 0xff) << 8;
-        k1 ^= ((long)((data & 0xFF00) >> 8) & 0xff);
+        k1 ^= ((long) ((data & 0xFF00) >> 8) & 0xff);
         k1 *= C1;
         k1 = Long.rotateLeft(k1, R1);
         k1 *= C2;
@@ -392,7 +389,7 @@ public class Murmur3 {
             case 10:
                 k2 ^= (long) (data[offset + tailStart + 9] & 0xff) << 8;
             case 9:
-                k2 ^= (long) (data[offset + tailStart + 8] & 0xff);
+                k2 ^= data[offset + tailStart + 8] & 0xff;
                 k2 *= C2;
                 k2 = Long.rotateLeft(k2, R3);
                 k2 *= C1;
@@ -413,7 +410,7 @@ public class Murmur3 {
             case 2:
                 k1 ^= (long) (data[offset + tailStart + 1] & 0xff) << 8;
             case 1:
-                k1 ^= (long) (data[offset + tailStart] & 0xff);
+                k1 ^= data[offset + tailStart] & 0xff;
                 k1 *= C1;
                 k1 = Long.rotateLeft(k1, R1);
                 k1 *= C2;
@@ -443,6 +440,10 @@ public class Murmur3 {
         h *= 0xc4ceb9fe1a85ec53L;
         h ^= (h >>> 33);
         return h;
+    }
+
+    private static int orBytes(byte b1, byte b2, byte b3, byte b4) {
+        return (b1 & 0xff) | ((b2 & 0xff) << 8) | ((b3 & 0xff) << 16) | ((b4 & 0xff) << 24);
     }
 
     public static class IncrementalHash32 {
@@ -478,7 +479,8 @@ public class Murmur3 {
                     case 3:
                         k = orBytes(tail[0], tail[1], tail[2], data[offset]);
                         break;
-                    default: throw new AssertionError(tailLen);
+                    default:
+                        throw new AssertionError(tailLen);
                 }
                 // mix functions
                 k *= C1_32;
@@ -535,9 +537,5 @@ public class Murmur3 {
             hash ^= (hash >>> 16);
             return hash;
         }
-    }
-
-    private static int orBytes(byte b1, byte b2, byte b3, byte b4) {
-        return (b1 & 0xff) | ((b2 & 0xff) << 8) | ((b3 & 0xff) << 16) | ((b4 & 0xff) << 24);
     }
 }
