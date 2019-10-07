@@ -1,37 +1,76 @@
-## Welcome to GitHub Pages
+# MOMO
 
-You can use the [editor on GitHub](https://github.com/BrainlessLabs/momo/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+MOMO is an Embedded Key-Value store built using Java.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Getting Started
 
-### Markdown
+Following the below instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Prerequisites
+Below softwares needs be installed in prior to run the application
+- [Git](https://git-scm.com)
+- [Gradle](https://gradle.org/install/)
+- Java 1.8
+- Any Java-IDE 
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+### Code Setup & Execution
 
-- Bulleted
-- List
+- Clone the forked repository to your local machine
 
-1. Numbered
-2. List
+```bash
+git clone  https://github.com/<user-account>/momo.git
 
-**Bold** and _Italic_ and `Code` text
+# change directory into the repo folder
+cd momo
 
-[Link](url) and ![Image](src)
+git remote -v
+# outputs the origin branch details :
+#       origin  https://github.com/<user-account>/momo.git (push)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+- Create a new feature branch 
+```bash
+git checkout -b "feature_name"
 
-### Jekyll Themes
+#Now check the branch
+git branch
+```
+- Build the project
+```bash
+#Run the below command at the root directory
+#where build.gradle is avaibale
+gradle build
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/BrainlessLabs/momo/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+# under the build/libs/ directory app jar 
+# will be available Run the jar
+java -jar momo-1.0-SNAPSHOT.jar
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Built With
+
+* [Gradle](https://gradle.org/) - Dependency Management
+* Java 1.8
+
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://github.com/BrainlessLabs/momo/blob/master/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+Check the Release tab
+
+## Authors
+
+See the list of [contributors](https://github.com/BrainlessLabs/momo/blob/master/CONTRIBUTORS.md) who participated in this project.
+
+## License
+
+This project is licensed under the Apache License - see the [LICENSE.md](https://github.com/BrainlessLabs/momo/blob/master/LICENSE) file for details
+
+## Acknowledgments
+
+* Hacktober fest
+
