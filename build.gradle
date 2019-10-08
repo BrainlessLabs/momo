@@ -23,3 +23,11 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.brainlesslabs.momo.Main'
+        )
+    }
+}
