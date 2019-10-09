@@ -11,5 +11,7 @@ public enum MomoErrorCodes {
     OUT_OF_STORAGE,
     IO_ERROR,
     DATA_CORRUPTED,
+    HASH_EXCEPTION,
+    COMPRESSION_EXCEPTION,
     GENERIC_ERROR
 }

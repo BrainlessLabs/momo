@@ -9,7 +9,7 @@ import lombok.ToString;
 import org.slf4j.Logger;
 
 @Data
-@ToString
+@ToString(callSuper = true)
 @EqualsAndHashCode
 public abstract class Options implements Cloneable {
     private int keySize;
@@ -18,4 +18,6 @@ public abstract class Options implements Cloneable {
     private CompressionMode compressionMode;
     private CreateOptions createOptions;
     private Logger logger;
+
+    public abstract boolean ok();
 }

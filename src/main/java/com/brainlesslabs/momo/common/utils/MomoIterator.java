@@ -1,4 +1,4 @@
-package com.brainlesslabs.momo.common;
+package com.brainlesslabs.momo.common.utils;
 
 import java.util.Iterator;
 
