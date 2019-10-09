@@ -39,19 +39,19 @@ git branch
 - Build the project
 ```bash
 #Run the below command at the root directory
-#where build.gradle is avaibale
-gradle build
+#where pom.xml is avaibale
+mvn clean compile package
 
 
-# under the build/libs/ directory app jar 
+# under the target/ directory app jar 
 # will be available Run the jar
 java -jar momo-1.0-SNAPSHOT.jar
 ```
 
 ## Built With
 
-* [Gradle](https://gradle.org/) - Dependency Management
-* Java 1.8
+* [Maven](https://maven.apache.org/) - Dependency Management
+* Java 9
 
 
 ## Contributing
