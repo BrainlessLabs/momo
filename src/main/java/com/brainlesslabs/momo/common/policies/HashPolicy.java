@@ -1,6 +1,7 @@
 package com.brainlesslabs.momo.common.policies;
 
 import com.brainlesslabs.momo.common.exceptions.HashException;
+import com.brainlesslabs.momo.common.utils.ByteSlice;
 import com.brainlesslabs.momo.common.utils.ConversionUtils;
 
 import java.io.IOException;
@@ -17,5 +18,5 @@ public interface HashPolicy {
         return hashLong;
     }
 
-    long hashToLong(final byte[] valueToHash) throws HashException;
+    long hashToLong(final ByteSlice valueToHash) throws HashException;
 }

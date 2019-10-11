@@ -3,6 +3,7 @@ package com.brainlesslabs.momo.common.utils;
 import lombok.NonNull;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Code taken from
@@ -41,6 +42,12 @@ public class ConversionUtils {
     }
 
     public static byte[] toByteArray(@NonNull final String string) {
-        return string.getBytes();
+        return string.getBytes(StandardCharsets.UTF_8);
+    }
+
+    public static ByteSlice toByteSlice(@NonNull final String string) {
+        final byte[] bytes = toByteArray(string);
+        final ByteSlice byteSlice = new ByteSlice(bytes, bytes.length);
+        return byteSlice;
     }
 }

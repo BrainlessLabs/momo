@@ -1,21 +1,25 @@
 package com.brainlesslabs.momo.common.utils;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 
 @ToString
+@NoArgsConstructor
 public class ByteSlice {
     @Getter
     private byte[] bytes;
     @Getter
     private int length;
 
+    private static final int PRIME = 59;
+
     public ByteSlice(@NonNull final byte[] bytes, final int length) {
         setBytes(bytes, length);
     }
 
-    public void setBytes(final byte[] bytes, int length) {
+    public void setBytes(@NonNull final byte[] bytes, int length) {
         this.bytes = bytes;
         this.length = length;
     }
@@ -34,10 +38,7 @@ public class ByteSlice {
     }
 
     public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        result = result * PRIME + java.util.Arrays.hashCode(this.bytes);
-        result = result * PRIME + this.length;
-        return result;
+        final int result = PRIME + java.util.Arrays.hashCode(this.bytes);
+        return result * PRIME + this.length;
     }
 }
