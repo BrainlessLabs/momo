@@ -1,4 +1,4 @@
-package com.brainlesslabs.momo.impl.simplelinklist;
+package com.brainlesslabs.momo.impl.simplefilelinklist;
 
 import com.brainlesslabs.momo.common.options.Options;
 import lombok.AllArgsConstructor;

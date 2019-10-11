@@ -7,7 +7,7 @@ import com.brainlesslabs.momo.common.policies.*;
 import com.brainlesslabs.momo.common.utils.ByteSlice;
 import com.brainlesslabs.momo.common.utils.ConversionUtils;
 import com.brainlesslabs.momo.common.utils.StopWatch;
-import com.brainlesslabs.momo.impl.simplelinklist.LinkListOptions;
+import com.brainlesslabs.momo.impl.simplefilelinklist.LinkListOptions;
 import net.jpountz.lz4.LZ4Compressor;
 import net.jpountz.lz4.LZ4Factory;
 import net.jpountz.lz4.LZ4FastDecompressor;
