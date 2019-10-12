@@ -3,7 +3,10 @@ package com.brainlesslabs.momo.common.policies;
 import com.brainlesslabs.momo.common.exceptions.CompressionException;
 import com.brainlesslabs.momo.common.utils.ByteSlice;
 import lombok.NonNull;
-import net.jpountz.lz4.*;
+import net.jpountz.lz4.LZ4Compressor;
+import net.jpountz.lz4.LZ4Exception;
+import net.jpountz.lz4.LZ4Factory;
+import net.jpountz.lz4.LZ4FastDecompressor;
 
 public class LZ4Compression implements CompressionPolicy {
     private static LZ4Factory factory = LZ4Factory.fastestInstance();
@@ -20,7 +23,7 @@ public class LZ4Compression implements CompressionPolicy {
             final int maxCompressedLength = compressor.maxCompressedLength(data.getLength());
             byte[] compressed = new byte[maxCompressedLength];
             compressor.compress(data.getBytes(), 0, data.getLength(),
-                            compressed, 0, maxCompressedLength);
+                    compressed, 0, maxCompressedLength);
             byteSlice = new ByteSlice(compressed, data.getLength());
         } catch (LZ4Exception e) {
             throw new CompressionException(String.format("Could not compress with error: %s", e.getMessage()));
@@ -39,7 +42,7 @@ public class LZ4Compression implements CompressionPolicy {
         try {
             byte[] restored = new byte[compressed.getLength()];
             decompressor.decompress(compressed.getBytes(), 0,
-                            restored, 0, compressed.getLength());
+                    restored, 0, compressed.getLength());
             byteSlice = new ByteSlice(restored, compressed.getLength());
         } catch (LZ4Exception e) {
             throw new CompressionException(String.format("Could not decompress with error: %s", e.getMessage()));

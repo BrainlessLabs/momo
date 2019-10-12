@@ -7,7 +7,7 @@ public class StopWatch {
     private Instant start = Instant.now();
     private Instant finish = Instant.now();
 
-    public void start(){
+    public void start() {
         start = Instant.now();
     }
 

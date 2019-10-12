@@ -7,15 +7,16 @@ import com.brainlesslabs.momo.common.options.WriteOptions;
 import com.brainlesslabs.momo.common.utils.DbStatus;
 import com.brainlesslabs.momo.common.utils.MomoIterator;
 import com.brainlesslabs.momo.common.utils.Snapshot;
+import lombok.NonNull;
 
 public interface MomoBase {
-    void open(final Options options, Object... params) throws MomoException;
+    void open(@NonNull final Options options, Object... params) throws MomoException;
 
-    void put(final WriteOptions writeOptions, final byte[] key, final byte[] value) throws MomoException;
+    void put(@NonNull final WriteOptions writeOptions, @NonNull final byte[] key, @NonNull final byte[] value) throws MomoException;
 
-    byte[] get(final ReadOptions readOptions, final byte[] key) throws MomoException;
+    byte[] get(@NonNull final ReadOptions readOptions, @NonNull final byte[] key) throws MomoException;
 
-    void delete(final WriteOptions writeOptions, final byte[] key) throws MomoException;
+    void delete(@NonNull final WriteOptions writeOptions, @NonNull final byte[] key) throws MomoException;
 
     MomoIterator getIterator() throws MomoException;
 

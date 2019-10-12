@@ -8,12 +8,11 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class ByteSlice {
+    private static final int PRIME = 59;
     @Getter
     private byte[] bytes;
     @Getter
     private int length;
-
-    private static final int PRIME = 59;
 
     public ByteSlice(@NonNull final byte[] bytes, final int length) {
         setBytes(bytes, length);
@@ -28,7 +27,7 @@ public class ByteSlice {
         if (o == this) return true;
         if (!(o instanceof ByteSlice)) return false;
         final ByteSlice other = (ByteSlice) o;
-        if (!other.canEqual((Object) this)) return false;
+        if (!other.canEqual(this)) return false;
         if (this.length != other.length) return false;
         return java.util.Arrays.equals(this.bytes, 0, length, other.bytes, 0, length);
     }

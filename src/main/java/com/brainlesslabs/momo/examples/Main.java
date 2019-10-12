@@ -61,9 +61,9 @@ public class Main {
             byteSlice.setBytes(bytes, bytes.length);
             try {
                 v = xxHashing.hashToLong(byteSlice);
-                m = (int)Math.abs(v % MODULO_VALUE);
+                m = (int) Math.abs(v % MODULO_VALUE);
                 counts[m] += 1;
-                print("Modulo: %d, Hash Value: %d",m , v);
+                print("Modulo: %d, Hash Value: %d", m, v);
             } catch (HashException e) {
                 print("Exception: %s", e.getMessage());
             }

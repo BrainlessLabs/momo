@@ -2,8 +2,8 @@ package com.brainlesslabs.momo.common.policies;
 
 import com.brainlesslabs.momo.common.exceptions.CompressionException;
 import com.brainlesslabs.momo.common.utils.ByteSlice;
-import org.xerial.snappy.Snappy;
 import lombok.NonNull;
+import org.xerial.snappy.Snappy;
 
 import java.io.IOException;
 
